@@ -1,6 +1,7 @@
 import { Component } from "../common/Component.js";
 import { AddTodo } from "./AddTodo.js";
 import { TodoList } from "./TodoList.js";
+import { TodoItem } from "./TodoItem.js"
 
 export class App extends Component {
   render() {
@@ -11,9 +12,11 @@ export class App extends Component {
       <div id="wrapper-add"></div>
       <div id="wrapper-todos"></div>
     `
-
-    const add = new AddTodo().render()
-    const todos = new TodoList().render()
+    
+    const add = new AddTodo({ todoContext: this.props.todoContext }).render()
+    const todos = new TodoList({ todoContext: this.props.todoContext }).render()
+    //const todoItem = new TodoItem({ todoContext: this.props.todoContext }).render()
+    
 
     container.querySelector('#wrapper-add').appendChild(add)
     container.querySelector('#wrapper-todos').appendChild(todos)
